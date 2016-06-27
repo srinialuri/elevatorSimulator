@@ -40,51 +40,10 @@ public class Floor{
 	      return downWaiting.size();
 	   }
 	   public void summonElevatorUp(Person person) {
-	      if(Simulator.debug) log.write("Summon up for person " + person.getPersonNumber());
-	      upWaiting.add(person);
-	      if(!summonUp){//if already summoned no need to do it again
-	         if(Simulator.debug) log.write("Light off summon UP for person " + person.getPersonNumber());
-	         elevatorController.summonElevatorUp(floorNumber, person);
-	         summonUp = true;
-	      }
+	    
 	   }
 	   public void summonElevatorDown(Person person) {
-	      if(Simulator.debug) log.write("Summon down for person " + person.getPersonNumber());
-	      downWaiting.add(person);
-	      if(!summonDown){ // id already summoned no need to do it again
-	         if(Simulator.debug) log.write("Light off summon DOWN for person " + person.getPersonNumber());
-	         elevatorController.summonElevatorDown(floorNumber, person);
-	         summonDown = true;
-	      }
+	      
 	   }      
-	   public void  elevatorArrivedUp(Elevator elevator) {
-	      Person p = null;
-	      summonUp = false;
-	      synchronized(upWaiting){
-		  for(int i = 0; i < upWaiting.size(); i++){
-		      p = (Person)upWaiting.get(i);
-		      p.elevatorArrived(elevator);
-		      p.attention();
-		  }
-	      }
-	      if(Simulator.debug) log.write("Elevator " + elevator.getElevatorNumber() + " has arrived UP on " + getFloorNumber());
-	   } // end elevatorArrived
-	   public void elevatorArrivedDown(Elevator elevator){
-	      Person p = null;
-	      summonDown = false;
-	      synchronized(downWaiting){
-		  for(int i = 0; i < downWaiting.size(); i++){
-		      p = (Person)downWaiting.get(i);
-		      p.elevatorArrived(elevator);
-		      p.attention();
-		  }
-	      }
-	      if(Simulator.debug) log.write("Elevator " + elevator.getElevatorNumber() + " has arrived DOWN on " + getFloorNumber());
-	   }
-	   public void stopWaiting(Person person) {
-	      if(Simulator.debug) log.write("Person " + person.getPersonNumber() + "  has stopped waiting on " + getFloorNumber());
-	      upWaiting.remove(person);
-	      downWaiting.remove(person);
-	   } // end giveUp        
-
+	  
 }

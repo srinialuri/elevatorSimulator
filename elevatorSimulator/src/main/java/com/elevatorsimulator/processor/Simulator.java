@@ -7,7 +7,7 @@ import com.elevatorsimulator.pojo.Person;
 
 /**
  * This represent Elevator Simulator
- * @author System
+ * @author Sini 
  *
  */
 public class Simulator {
